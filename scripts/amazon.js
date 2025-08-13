@@ -1,4 +1,4 @@
-const products =[{
+/*const products =[{
     image:'images/products/athletic-cotton-socks-6-pairs.jpg',
     name:'Black and Gray Athletic Cotton Socks - 6 Pairs',
     ratings:{
@@ -22,7 +22,15 @@ const products =[{
         count:56
     },
     priceCents:799
-}];
+},{
+    image:'images/products/black-2-slot-toaster.jpg',
+    name:'2 Slot Toaster - Black',
+    ratings:{
+        stars:5,
+        count:2197
+    },
+    priceCents:1899
+}];*/
 
 let productHTML='';
 
@@ -42,9 +50,9 @@ products.forEach((product)=>{
 
             <div class="product-rating-container">
             <img class="product-rating-stars"
-                src="images/ratings/rating-${product.ratings.stars * 10}.png">
+                src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
-                ${product.ratings.count}
+                ${product.rating.count}
             </div>
             </div>
 
