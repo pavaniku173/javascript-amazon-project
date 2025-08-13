@@ -82,7 +82,9 @@ products.forEach((product)=>{
             Added
             </div>
 
-            <button class="add-to-cart-button button-primary">
+            <button class="add-to-cart-button button-primary
+             js-event-add-to-cart" 
+            data-product-name="${product.name}">
             Add to Cart
             </button>
             </div>
@@ -91,6 +93,33 @@ products.forEach((product)=>{
            // console.log(html);
 });
 
-console.log(productHTML);
+//console.log(productHTML);
 
 document.querySelector('.js-products-grid').innerHTML= productHTML;
+
+document.querySelectorAll('.js-event-add-to-cart').
+        forEach((button)=>{
+            button.addEventListener('click',()=>{
+                //console.log('added to cart');
+               // console.log(button.dataset.productName);
+               const prodName=button.dataset.productName;
+               let matchingItem;
+               cart.forEach((item)=>{
+                if(item.producName===prodName){
+                    matchingItem=item;
+                }
+               });
+               if(matchingItem){
+                matchingItem.quantity+=1;
+               }else{
+                cart.push({
+                    producName:prodName,
+                    quantity:1
+                });
+               }
+
+               
+               
+               console.log(cart);
+            });
+        });
