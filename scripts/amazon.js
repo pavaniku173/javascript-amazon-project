@@ -118,8 +118,18 @@ document.querySelectorAll('.js-event-add-to-cart').
                 });
                }
 
+               let totalQuantity=0;
+               cart.forEach((quan)=>{
+                totalQuantity+=quan.quantity;
+
+               });
+               console.log(totalQuantity);
+
                
                
                console.log(cart);
+
+
+               document.querySelector('.js-cart-quantity').innerHTML=totalQuantity;
             });
         });
