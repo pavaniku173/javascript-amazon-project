@@ -1,9 +1,9 @@
 export const cart=[];
 
- export function addToCart(prodName){
+ export function addToCart(prodId){
     let matchingItem;
                cart.forEach((item)=>{
-                if(item.producName===prodName){
+                if(item.producId===prodId){
                     matchingItem=item;
                 }
                });
@@ -11,7 +11,7 @@ export const cart=[];
                 matchingItem.quantity+=1;
                }else{
                 cart.push({
-                    producName:prodName,
+                    producId:prodId,
                     quantity:1
                 });
                }

@@ -87,7 +87,7 @@ products.forEach((product)=>{
 
             <button class="add-to-cart-button button-primary
              js-event-add-to-cart" 
-            data-product-name="${product.name}">
+            data-product-id="${product.id}">
             Add to Cart
             </button>
             </div>
@@ -120,7 +120,7 @@ document.querySelectorAll('.js-event-add-to-cart').
             button.addEventListener('click',()=>{
                 //console.log('added to cart');
                // console.log(button.dataset.productName);
-               const prodName=button.dataset.productName;
+               const prodName=button.dataset.productId;
                addToCart(prodName);
                updateTotalCartQuantity();
 
