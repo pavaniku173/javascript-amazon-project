@@ -1,5 +1,6 @@
-import {cart} from '../data/cart.js';
+import {cart,addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
+
 /*const products =[{
     image:'images/products/athletic-cotton-socks-6-pairs.jpg',
     name:'Black and Gray Athletic Cotton Socks - 6 Pairs',
@@ -99,39 +100,29 @@ products.forEach((product)=>{
 
 document.querySelector('.js-products-grid').innerHTML= productHTML;
 
+
+
+
+function updateTotalCartQuantity(){
+    let totalQuantity=0;
+               cart.forEach((quan)=>{
+                totalQuantity+=quan.quantity;
+
+               });
+               document.querySelector('.js-cart-quantity').innerHTML=totalQuantity;
+
+               console.log(totalQuantity);
+}
+
+
 document.querySelectorAll('.js-event-add-to-cart').
         forEach((button)=>{
             button.addEventListener('click',()=>{
                 //console.log('added to cart');
                // console.log(button.dataset.productName);
                const prodName=button.dataset.productName;
-               let matchingItem;
-               cart.forEach((item)=>{
-                if(item.producName===prodName){
-                    matchingItem=item;
-                }
-               });
-               if(matchingItem){
-                matchingItem.quantity+=1;
-               }else{
-                cart.push({
-                    producName:prodName,
-                    quantity:1
-                });
-               }
+               addToCart(prodName);
+               updateTotalCartQuantity();
 
-               let totalQuantity=0;
-               cart.forEach((quan)=>{
-                totalQuantity+=quan.quantity;
-
-               });
-               console.log(totalQuantity);
-
-               
-               
-               console.log(cart);
-
-
-               document.querySelector('.js-cart-quantity').innerHTML=totalQuantity;
             });
         });
