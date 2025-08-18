@@ -18,8 +18,7 @@ let cartHTML='';  //variable to hold cart HTML
     console.log(matchingProduct);
 cartHTML+=  //append HTML for each cart item
     `
-    <div class="cart-item-container 
-    js-cart-item-container-${matchingProduct.id}">
+    <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
     <div class="delivery-date">
       Delivery date: Tuesday, June 21
     </div>
@@ -109,9 +108,10 @@ cartHTML+=  //append HTML for each cart item
        console.log(prodId);  //log product id to console
        removeFromCart(prodId);  //call function to remove product from cart
        console.log(cart);
-       const conatiner=document.querySelector(`.js-cart-item-container-${prodId}`);
-       console.log(conatiner);
-       conatiner.remove();
-    })
+
+       const container=document.querySelector(`.js-cart-item-container-${prodId}`);
+       //console.log(container);
+       container.remove();  //remove cart item container from DOM   
+    });
 
  });
