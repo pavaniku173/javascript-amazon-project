@@ -106,8 +106,8 @@ document.querySelector('.js-products-grid').innerHTML= productHTML;
 
 function updateTotalCartQuantity(){
     let totalQuantity=0;
-               cart.forEach((quan)=>{
-                totalQuantity+=quan.quantity;
+               cart.forEach((item)=>{
+                totalQuantity+=item.quantity;
 
                });
                document.querySelector('.js-cart-quantity').innerHTML=totalQuantity;
