@@ -2,6 +2,13 @@
  import {products} from '../data/products.js';
  import { priceToCents } from './utils/money.js';
 
+
+ //console.log(dayjs());  //log dayjs to check if it's working
+
+ const today= dayjs();
+ const deliveryDate= today.add(7,'days');
+ console.log(deliveryDate.format('dddd, MMMM D'));  //log formatted delivery date
+
 let cartHTML='';  //variable to hold cart HTML
 
  cart.forEach((cartItem)=>{
