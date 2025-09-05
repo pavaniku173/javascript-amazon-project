@@ -6,6 +6,7 @@
  import {getproduct} from '../data/products.js';
  import { getdeliveryOption } from '../data/deliveryOptions.js';
 
+
 function renderCheckoutSummary(){
 
 
@@ -144,6 +145,7 @@ forEach((remove)=>{
     console.log(prodId); 
     removeFromCart(prodId);  
     renderCheckoutSummary();
+    renderPaymentSummary();     //regenerate payment summary on product removal using mvc
 //      console.log(cart);
 
 //       const container=document.querySelector(`.js-cart-item-container-${prodId}`);
@@ -162,6 +164,7 @@ const { productId } = optionElem.dataset;
 const deliveryOptionId = optionElem.dataset.deliveryOptionId;
     updateDeliveryOption(productId,deliveryOptionId);
     renderCheckoutSummary();
+    renderPaymentSummary();            //re-render payment summary on delivery option change
   });
 });
 }
