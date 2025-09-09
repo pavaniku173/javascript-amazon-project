@@ -5,6 +5,8 @@
  import { renderPaymentSummary } from './paymentSummary.js';  
  import {getproduct} from '../data/products.js';
  import { getdeliveryOption } from '../data/deliveryOptions.js';
+ import '../data/cart-oop.js';  //importing oop cart to use its functionality
+import { cartoop } from '../data/cart-oop.js';
 
 
 function renderCheckoutSummary(){
@@ -171,3 +173,7 @@ const deliveryOptionId = optionElem.dataset.deliveryOptionId;
 renderCheckoutSummary();
 
 renderPaymentSummary();
+
+cartoop.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
+console.log(cartoop);
+console.log(cartoop.cartItems);
