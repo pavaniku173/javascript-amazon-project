@@ -6,7 +6,7 @@
  import {getproduct} from '../data/products.js';
  import { getdeliveryOption } from '../data/deliveryOptions.js';
  import '../data/cart-oop.js';  //importing oop cart to use its functionality
-import { cartoop } from '../data/cart-oop.js';
+import { businessCart, cartoop } from '../data/cart-oop.js';
 
 
 function renderCheckoutSummary(){
@@ -174,6 +174,22 @@ renderCheckoutSummary();
 
 renderPaymentSummary();
 
-cartoop.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
+//cartoop.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6'); 
+ 
+/* Based on the code and comments you've provided, you've identified the exact cause of your previous issue: the line cartoop.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');.
+
+The Problem
+The line cartoop.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6'); was a hardcoded instruction to add a product to the cart every time the page loaded.
+
+When you refreshed the page, the JavaScript code was executed again from the top.
+
+Your cartoop object was created, and its constructor correctly loaded the saved cart from local storage.
+
+Immediately after, the line cartoop.addToCart(...) was executed, which automatically added one more item to the cart and saved it to local storage.
+
+This is why the quantity of your socks product was increasing with every refresh and why the cart appeared to be "resetting" and then getting one extra item. It was not a bug in your cart-oop class itself, but a logical error in how you were using it.
+
+*/
 console.log(cartoop);
-console.log(cartoop.cartItems);
+console.log(businessCart);
+//console.log(cartoop.cartItems);

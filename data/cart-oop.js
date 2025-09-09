@@ -1,15 +1,22 @@
 
-class cart{
+class Cart{
     cartItems;
-    #LocalStoragekey='cart';
+    #LocalStoragekey=undefined;
 
-    constructor(){
-        this.loadFromStorage();
+    // constructor(){
+    //     this.loadFromStorage();
+    // }
+
+    constructor(LocalStoragekey){
+        this.#LocalStoragekey=LocalStoragekey;
+        this.#loadFromStorage();
+
+
     }
 
-    loadFromStorage(){
+    #loadFromStorage(){
          this.cartItems= JSON.parse(localStorage.getItem(this.#LocalStoragekey));
-         if(!this.cartitems){
+         if(!this.cartItems){
             this.cartItems=
             [{
                 productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -62,4 +69,13 @@ class cart{
     }
 
 }
- export const cartoop=new cart();
+ export const cartoop=new Cart('cart');
+ export const businessCart= new Cart('businessCart');  //separate cart instance for business useCase
+
+//  cartoop.LocalStoragekey='cart';
+//  businessCart.LocalStoragekey='businessCart';
+
+
+ //cartoop.loadFromStorage();        already called in constructor automatically
+ 
+
