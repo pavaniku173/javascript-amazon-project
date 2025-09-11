@@ -66,7 +66,7 @@ cartHTML+=  //append HTML for each cart item
             ${matchingProduct.name}
         </div>
         <div class="product-price">
-          ${priceToCents(matchingProduct.priceCents)}
+          ${matchingProduct.getPrice()}
         </div>
         <div class="product-quantity">
           <span>
