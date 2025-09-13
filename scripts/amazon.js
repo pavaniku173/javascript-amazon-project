@@ -1,7 +1,8 @@
 import {cart,addToCart} from '../data/cart.js';
-import {products} from '../data/products.js';
+import {products,loadProducts} from '../data/products.js';
 import { priceToCents } from './utils/money.js';    
 
+loadProducts(renderProductsGrid);
 /*const products =[{
     image:'images/products/athletic-cotton-socks-6-pairs.jpg',
     name:'Black and Gray Athletic Cotton Socks - 6 Pairs',
@@ -35,7 +36,7 @@ import { priceToCents } from './utils/money.js';
     },
     priceCents:1899
 }];*/
-
+function renderProductsGrid(){
 let productHTML='';
 
 products.forEach((product)=>{
@@ -77,7 +78,11 @@ products.forEach((product)=>{
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
+
             </div>
+ 
+                        ${product.getSizeChartHTML()}
+
 
             <div class="product-spacer"></div>
 
@@ -127,3 +132,4 @@ document.querySelectorAll('.js-event-add-to-cart').
 
             });
         });
+    }

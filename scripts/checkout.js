@@ -1,5 +1,5 @@
  import {cart, removeFromCart,updateDeliveryOption} from '../data/cart.js';
- import {products} from '../data/products.js';
+ import {loadProducts} from '../data/products.js';
  import { priceToCents } from './utils/money.js';
  import { deliveryOptions } from '../data/deliveryOptions.js';
  import { renderPaymentSummary } from './paymentSummary.js';  
@@ -7,8 +7,17 @@
  import { getdeliveryOption } from '../data/deliveryOptions.js';
  import '../data/cart-oop.js';  //importing oop cart to use its functionality
 import { businessCart, cartoop } from '../data/cart-oop.js';
+import '../data/backend-practice.js';
 
 
+
+loadProducts(()=>{
+  renderCheckoutSummary();
+
+renderPaymentSummary();
+
+
+});
 function renderCheckoutSummary(){
 
 
@@ -170,9 +179,9 @@ const deliveryOptionId = optionElem.dataset.deliveryOptionId;
   });
 });
 }
-renderCheckoutSummary();
+// renderCheckoutSummary();
 
-renderPaymentSummary();
+// renderPaymentSummary();
 
 //cartoop.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6'); 
  
