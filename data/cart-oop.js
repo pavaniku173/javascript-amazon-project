@@ -77,5 +77,21 @@ class Cart{
 
 
  //cartoop.loadFromStorage();        already called in constructor automatically
+
+  export function loadCart(fun){
+   const xhr= new XMLHttpRequest();
+
+   xhr.addEventListener('load',()=>{
+     console.log(xhr.response);
+
+     console.log('load cart successfully');
+     if(fun){
+       fun();
+     }
+   });
+   xhr.open('GET','https://supersimplebackend.dev/cart');
+   xhr.send();
+ }
+ //loadProducts();
  
 

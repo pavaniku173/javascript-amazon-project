@@ -8,16 +8,74 @@
  import '../data/cart-oop.js';  //importing oop cart to use its functionality
 import { businessCart, cartoop } from '../data/cart-oop.js';
 import '../data/backend-practice.js';
+import {loadCart} from  '../data/cart-oop.js';
 
 
-
-loadProducts(()=>{
+/*new Promise((resolve)=>{
+  //console.log('start promise');
+  loadProducts(()=>{
+    //console.log('finished loading products');
+    resolve();
+    //console.log('promise resolved');
+  });
+}).then(()=>{
   renderCheckoutSummary();
+   renderPaymentSummary();
+    //console.log('next step after loading products');
+  });*/
 
-renderPaymentSummary();
+Promise.all([
+  new Promise((resolve)=>{
+    loadProducts(()=>{
+      resolve('resolve1');
+    });
 
-
+  }),new Promise((resolve)=>{
+    loadCart(()=>{
+      resolve(10);    
+    });
+  })
+]).then((values)=>{
+  console.log(values);  //values is an array of resolved values from all promises
+  renderCheckoutSummary();
+  renderPaymentSummary();
 });
+
+
+
+
+  /*new Promise((resolve)=>{
+    loadProducts(()=>{
+      resolve();
+    });
+
+  }).then(()=>{
+    return new Promise((resolve)=>{
+      loadCart(()=>{
+        resolve();    
+      });
+    });
+  }).then(()=>{
+    renderCheckoutSummary();
+    renderPaymentSummary();
+  });*/
+
+
+  
+//BOTH callbacks and promises works the same way 1st loadprodcuts then goes to checkout and payment page
+//callbacks are nested inside each other whereas promises are chained using then() method
+
+
+ /*loadProducts(()=>{
+  loadCart(()=>{
+    renderCheckoutSummary();
+    renderPaymentSummary();
+  });
+  //renderCheckoutSummary();
+
+ //renderPaymentSummary();
+});*/
+
 function renderCheckoutSummary(){
 
 
