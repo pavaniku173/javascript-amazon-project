@@ -11,6 +11,29 @@ import '../data/backend-practice.js';
 import {loadCart} from  '../data/cart-oop.js';
 
 
+async function loadPage(){
+  //console.log('Page loaded');
+
+  await loadProductsFetch();  //wait for products to load
+
+  const value= await new Promise((resolve)=>{
+    loadCart(()=>{
+       resolve('valye from load cart');
+    });
+
+  });
+  console.log(value);  
+  renderCheckoutSummary();
+  renderPaymentSummary();
+
+  //return 'Page load complete';
+}
+loadPage();
+/*.then((value)=>{
+  console.log(value);
+  console.log('Next step after page load');
+})*/
+
 /*new Promise((resolve)=>{
   //console.log('start promise');
   loadProducts(()=>{
@@ -24,7 +47,7 @@ import {loadCart} from  '../data/cart-oop.js';
     //console.log('next step after loading products');
   });*/
 
-Promise.all([
+/*Promise.all([
   // new Promise((resolve)=>{
   //   loadProducts(()=>{
   //     resolve('resolve1');
@@ -41,7 +64,7 @@ Promise.all([
   console.log(values);  //values is an array of resolved values from all promises
   renderCheckoutSummary();
   renderPaymentSummary();
-});
+});*/
 
 
 
