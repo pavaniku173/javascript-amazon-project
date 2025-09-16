@@ -1,5 +1,5 @@
  import {cart, removeFromCart,updateDeliveryOption} from '../data/cart.js';
- import {loadProducts} from '../data/products.js';
+ import {loadProducts,loadProductsFetch} from '../data/products.js';
  import { priceToCents } from './utils/money.js';
  import { deliveryOptions } from '../data/deliveryOptions.js';
  import { renderPaymentSummary } from './paymentSummary.js';  
@@ -25,12 +25,14 @@ import {loadCart} from  '../data/cart-oop.js';
   });*/
 
 Promise.all([
-  new Promise((resolve)=>{
-    loadProducts(()=>{
-      resolve('resolve1');
-    });
+  // new Promise((resolve)=>{
+  //   loadProducts(()=>{
+  //     resolve('resolve1');
+  //   });
 
-  }),new Promise((resolve)=>{
+  // })
+  loadProductsFetch()
+  ,new Promise((resolve)=>{
     loadCart(()=>{
       resolve(10);    
     });

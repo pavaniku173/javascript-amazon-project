@@ -52,6 +52,26 @@ class Clothing extends Product{
 
 export let products=[];
 
+ export function loadProductsFetch(){
+  const promise= fetch('https://supersimplebackend.dev/products').then((response)=>{
+     return response.json();
+  }).then((productsData)=>{
+    products= productsData.map((productDetails)=>{
+      if(productDetails.type==='clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    
+    });
+    //console.log(products);
+    console.log('load products successfully');
+  }); 
+     return promise;
+  }
+ /*loadProductsFetch().then(()=>{
+  console.log("next steps after loading products");
+ });*/
+
 export function loadProducts(fun){
   const xhr= new XMLHttpRequest();
   xhr.addEventListener('load',()=>{
@@ -72,7 +92,7 @@ export function loadProducts(fun){
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
 }
-loadProducts();
+//loadProducts();
 
 // const tshirt= new Clothing({id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
 //   image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
