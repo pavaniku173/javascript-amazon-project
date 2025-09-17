@@ -65,6 +65,9 @@ export let products=[];
     });
     //console.log(products);
     console.log('load products successfully');
+  })
+  .catch((error)=>{
+ console.log('error in promise .try again later');
   }); 
      return promise;
   }
@@ -89,10 +92,14 @@ export function loadProducts(fun){
       fun();
     }
   });
+
+  xhr.addEventListener('error' ,(error)=>{
+     console.log('error.try again later');
+  });
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
 }
-//loadProducts();
+loadProducts();
 
 // const tshirt= new Clothing({id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
 //   image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",

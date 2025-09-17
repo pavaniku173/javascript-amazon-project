@@ -13,16 +13,24 @@ import {loadCart} from  '../data/cart-oop.js';
 
 async function loadPage(){
   //console.log('Page loaded');
-
+try{
+  //throw 'error';
   await loadProductsFetch();  //wait for products to load
 
-  const value= await new Promise((resolve)=>{
+  const value= await new Promise((resolve,reject)=>{
+    //throw does not work inside promise
     loadCart(()=>{
+      //reject('error in loading cart');
        resolve('valye from load cart');
     });
 
   });
   console.log(value);  
+
+}catch(error){
+  console.log('Error loading products:',error);
+}
+  
   renderCheckoutSummary();
   renderPaymentSummary();
 
