@@ -2,6 +2,7 @@ import {cart} from '../data/cart.js';
 import {getproduct} from '../data/products.js';
 import {getdeliveryOption} from '../data/deliveryOptions.js';
 import { priceToCents } from './utils/money.js';
+import { addOrders } from '../../data/orders.js';
 
 export function renderPaymentSummary(){
     console.log("Rendering payment summary...");
@@ -52,9 +53,37 @@ export function renderPaymentSummary(){
             <div class="payment-summary-money">$${priceToCents(totalCents)}</div>
           </div>
 
-          <button class="place-order-button button-primary">
+          <button class="place-order-button button-primary js-event-place-order">
             Place your order
           </button>
     `;
     document.querySelector('.js-payment-summary').innerHTML=paymentSummaryHTML;
+
+    document.querySelector('.js-event-place-order').
+    addEventListener('click',async()=>{
+      try{
+
+        const response=await fetch('https://supersimplebackend.dev/orders',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify({
+            cart:cart,
+          })
+        });
+       const order=await response.json();
+       //console.log(order);
+        addOrders(order);
+
+      }catch(error){
+        console.log('Error placing order:',error);
+        
+
+      }
+      window.location.href='orders.html';
+      
+
+    });
+
 }
